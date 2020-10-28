@@ -1,4 +1,6 @@
 # Operating System Principle and Practice Summary
+## Part 0: History and introduction
+1. 
 ## Part 1: Kernals and Processes
 2.  [Kernals and Processes](Chapter2.md)(Done but need more diagrams)
 3.  [The Programming Interface](Chapter3.md)(In progress)

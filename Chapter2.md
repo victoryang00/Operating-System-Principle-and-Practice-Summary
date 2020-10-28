@@ -143,9 +143,9 @@ The hardware saves the values for the processor state word before jumping throug
 - pushad: instruction to save the remianing register on to the stack.
 # x86 Mode Transfer
 ## When user-level process is running
-![alt text](/Figures/Chapter2/Figure_2-5-1.png "user-level process diagram")
+![alt text](Figures/Chapter2/Figure_2-5-1.png "user-level process diagram")
 ## When a processor exception or system call trap occures
-![alt text](/Figures/Chapter2/Figure_2-5-2.png "interrupt diagram")
+![alt text](Figures/Chapter2/Figure_2-5-2.png "interrupt diagram")
 
 The hardware saves a small amount of the interrupted thread state
 1. **Mask Interrupts**: Starts by preventing any interrupts from occurring while the processor is switching from user mode to kernel mode.
@@ -155,7 +155,7 @@ The hardware saves a small amount of the interrupted thread state
 5. **Optionally save an error code**: Certian typess of exceptions, such as page faults, generates an error code to provide more info about the event. For these exceptions, the hardware pushes this code, making it the top item of the stack. For other types of events, the software pushes a dummy value onto the stack instead of the error code.
 6. **Invoke the interrupt handler**: Finally, the hardware changes the code segment/program counter to the address of the interrupt handler procedure.A special register in the processor contains the location of the interrupt vector table in kernel memory. This register can only be modified by ther kernel.
 ## When The handler software starts
-![alt text](/Figures/Chapter2/Figure_2-5-3.png "handler diagram")
+![alt text](Figures/Chapter2/Figure_2-5-3.png "handler diagram")
 1. **Saves the other registers**: The handler pushes the rest of the registers, including the current stack pointer using pushad instruction.
 2. **Handler completes**: Once the handler completes, it can resume the interrupted process. The handler pops the registers it saved on the stack. This restores all the register except the execution flags, program counter, and stack pointer. Uses the popad instruction. Then the handler executes the x86 iret instruction to restore the code segment, program counter, execution flags, stack segment, and stack pointer from the kernel's interrupt stack. This restroes the process to what is was before the interrupt.
 ### How the hardware prevents infinite intrrupts
@@ -241,7 +241,7 @@ The OS needs to inform the application when it recieves a processor exception, s
 ### User-level resource allocation
 The operating system must inform the process when its allocation changes. Example: Java garbage collector.
 
-TODO: Diagrams
+![Tracing garbage collection - Wikipedia](Figures/Chapter2/330px-Animation_of_the_Naive_Mark_and_Sweep_Garbage_Collector_Algorithm.png)
 ## UNIX signals
 - **Types of Signals**: In place of hardware-defined interrupts and processor exceptions, the kernel defines a limited number of signal types that a processor can recieve.
 - **Handlers**: Each process defines its own handlers for each signal type.
@@ -261,7 +261,10 @@ Operating system providing the VM.
 ### Guest operating system
 The VM OS running inside an OS
 
-TODO: Diagram
+![Screen Shot 2020-10-29 at 3.32.29 AM](Figures/Chapter2/VMM.png)
+
+![Hypervisor](Figures/Chapter2/hypervisor.png)
+
 ## How Does the guest kernel start a process?
 - The host loads the guest bootloader from the virtual disk and starts it running.
 - THe guest bootloader loads the guest kernel from the virtual disk into the memeory and starts it running.
